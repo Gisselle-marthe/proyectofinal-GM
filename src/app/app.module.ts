@@ -5,10 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardModule } from './layouts/dashboard/dashboard.module';
-
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule,AppRoutingModule, BrowserAnimationsModule, DashboardModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+   DashboardModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
