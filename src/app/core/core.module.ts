@@ -1,15 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TeachComponent } from './teach.component';
 
 
 
 @NgModule({
-  declarations: [
-    TeachComponent
-  ],
+  declarations: [],
   imports: [
     CommonModule
   ]
 })
-export class TeachModule { }
+export class CoreModule { }

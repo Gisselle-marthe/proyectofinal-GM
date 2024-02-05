@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@angular/core';
 import { MY_USER_TOKEN } from '../injection-tokens';
-import { delay, of, tap } from 'rxjs';
+import { delay, of, tap, Observable } from 'rxjs';
 import { user } from '../../layouts/dashboard/pages/users/models/index';
 import { AlertsService } from './alerts.service';
 
-const ROLES_DB: string[] = ['ADMIN', 'USER'];
+const ROLES_DB: string[] = ['ADMIN', 'USER', 'STUDENTS'];
 
 let USER_DB: user[] = [
   {
@@ -14,7 +14,7 @@ let USER_DB: user[] = [
     age: '19',
     email: 'dzaens@emaeil.com',
     password: '1234567',
-    role: 'ADMIN',
+    role: 'STUDENTS',
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ let USER_DB: user[] = [
     age: '20',
     email: 'mary893@emaeil.com',
     password: 'm095gordillo',
-    role: 'USER',
+    role: 'STUDENTS',
   },
   {
     id: 5,
@@ -50,7 +50,7 @@ let USER_DB: user[] = [
     age: '20',
     email: 'llanos45@emaeil.com',
     password: '1lan0s55',
-    role: 'USER',
+    role: 'STUDENTS',
   },
   {
     id: 6,
@@ -59,7 +59,7 @@ let USER_DB: user[] = [
     age: '25',
     email: 'fernandomej87@emaeil.com',
     password: '087463fm',
-    role: 'USER',
+    role: 'STUDENTS',
   },
   {
     id: 7,
@@ -68,7 +68,7 @@ let USER_DB: user[] = [
     age: '30',
     email: 'matildecenten0@emaeil.com',
     password: 'Centmatil',
-    role: 'USER',
+    role: 'STUDENTS',
   },
   {
     id: 8,
@@ -77,7 +77,7 @@ let USER_DB: user[] = [
     age: '18',
     email: 'Telsa32@emaeil.com',
     password: '94764532',
-    role: 'USER',
+    role: 'STUDENTS',
   },
   {
     id: 9,
@@ -86,7 +86,7 @@ let USER_DB: user[] = [
     age: '19',
     email: 'abrilg1653@emaeil.com',
     password: 'aprilg0d0y',
-    role: 'USER',
+    role: 'STUDENTS',
   },
   {
     id: 10,
@@ -111,10 +111,8 @@ export class UsersService {
   createUser(paylood: user) {
     USER_DB.push(paylood);
     return this.getUsers().pipe(
-      tap(() =>
-        this.alerts.showSuccess('Exitoso', 'Se Ha agregado el Usuario')
-      )
-    );;
+      tap(() => this.alerts.showSuccess('Exitoso', 'Se Ha agregado el Usuario'))
+    );
   }
   deleteUser(userID: number) {
     USER_DB = USER_DB.filter((user) => user.id !== userID);
@@ -124,5 +122,8 @@ export class UsersService {
       )
     );
   }
+
+  getUserById(id: number | string): Observable<user | undefined> {
+    return of(USER_DB.find((user) => user.id == id)).pipe(delay(1000));
+  }
 }
-    

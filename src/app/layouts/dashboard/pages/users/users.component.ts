@@ -4,6 +4,7 @@ import { user } from './models/index';
 import { UsersService } from '../../../../core/services/users.service';
 import { LoadingService } from '../../../../core/services/loading.service';
 import { forkJoin } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -16,7 +17,9 @@ export class UsersComponent implements OnInit {
   roles: string[] = [];
   constructor(
     private UsersService: UsersService,
-    private LoadingService: LoadingService
+    private LoadingService: LoadingService,
+    private route: ActivatedRoute
+    
   ) {}
   ngOnInit(): void {
     this.getPageData();
@@ -63,4 +66,5 @@ export class UsersComponent implements OnInit {
       },
     });
   }
+
 }

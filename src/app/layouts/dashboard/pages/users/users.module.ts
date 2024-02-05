@@ -15,9 +15,11 @@ import { UsersService } from '../../../../core/services/users.service';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { UsersMockService } from '../../../../core/services/users-mock.service';
 import { MatIconModule } from '@angular/material/icon';
+import { UsersRoutingModule } from './user-routing.module';
+import { UserDetailComponent } from './pages/user-detail/user-detail.component';
 
 @NgModule({
-  declarations: [UsersComponent, UserFormComponent],
+  declarations: [UsersComponent, UserFormComponent, UserDetailComponent],
   imports: [
     CommonModule,
     MatTableModule,
@@ -28,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
     MatButtonModule,
     ReactiveFormsModule,
     SharedModule,
+    UsersRoutingModule,
     MatIconModule
   ],
   exports: [UsersComponent],

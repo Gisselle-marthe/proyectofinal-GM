@@ -9,7 +9,9 @@ import { UsersModule } from './pages/users/users.module';
 import { RouterModule } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { UsersComponent } from './pages/users/users.component';
-import {MatListModule} from '@angular/material/list';
+import { MatListModule } from '@angular/material/list';
+import { UserDetailComponent } from './pages/users/pages/user-detail/user-detail.component';
+import { CoursesComponent } from './pages/courses/courses.component';
 
 @NgModule({
   declarations: [DashboardComponent],
@@ -31,9 +33,20 @@ import {MatListModule} from '@angular/material/list';
         component: UsersComponent,
       },
       {
+        path: 'courses',
+        loadChildren: () =>
+          import('./pages/courses/courses.module').then((m) => m.CoursesModule),
+      },
+      {
+        path: 'users/:id',
+        component: UserDetailComponent,
+      },
+
+      {
         path: '**',
         redirectTo: 'home',
       },
+      //
     ]),
   ],
 

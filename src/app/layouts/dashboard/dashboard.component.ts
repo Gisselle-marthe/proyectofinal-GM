@@ -13,5 +13,7 @@ export class DashboardComponent {
 
   logout(): void {
     // this.authService.logout();
+    localStorage.removeItem('acces-login')
+    this.router.navigate(['auth', 'login'])
   }
 }
