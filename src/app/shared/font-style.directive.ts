@@ -6,7 +6,7 @@ import { Directive, ElementRef, Renderer2, Input } from '@angular/core';
 })
 export class FontStyleDirective {
   @Input() fontSize: string = '20px'; 
-  @Input() fontColor: string = 'green';
+  @Input() fontColor: string = '#2271b3 ';
   @Input() marginLeft: string = '20px';
 constructor(private el: ElementRef, private renderer: Renderer2) {} 
 ngOnInit() {

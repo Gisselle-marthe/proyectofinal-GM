@@ -1,12 +1,11 @@
 <mat-drawer-container class="dashboard-container" autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    @if (showFiller) {
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    }
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+  <mat-drawer #drawer class="dashboard-sidebar" mode="side">
+    <mat-nav-list clas="dashboard-sidebar ">
+      <a #homeLink="routerLinkActive" routerLinkActive [activated]="homeLink.isActive" routerLink="home"
+        mat-list-item>Home</a>
+      <a #usersLink="routerLinkActive" routerLinkActive  [activated]="usersLink.isActive" routerLink="users" mat-list-item>Users</a>
+      <a (click)="logout()" mat-list-item>Logout</a>
+    </mat-nav-list>
   </mat-drawer>
 
   <div class="example-sidenav-content">
@@ -25,9 +24,9 @@
       </button>
     </mat-toolbar>
 
-
-  <app-users></app-users>
-</div>
+    <router-outlet></router-outlet>
+    <!-- <app-users></app-users> -->
+  </div>
 
 
 </mat-drawer-container>
